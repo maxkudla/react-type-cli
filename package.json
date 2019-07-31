@@ -1,0 +1,23 @@
+{
+  "name": "react-type-cli",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc && cp -r src/templates dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "rtc": "dist/index.js"
+  },
+  "keywords": [],
+  "author": "Max Kudla",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.13.0",
+    "handlebars": "^4.1.2",
+    "rc-config-loader": "^2.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^12.6.8"
+  }
+}

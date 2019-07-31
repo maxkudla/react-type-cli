@@ -1,0 +1,25 @@
+{{#if withConnect}}
+import { connect, MapStateToPropsParam, MapDispatchToPropsParam } from "react-redux";
+{{/if}}
+import {{name}} from "./{{name}}"
+
+
+{{#if withConnect}}
+const mapStateToProps: MapStateToPropsParam<{{name}}StateProps, {{name}}OwnProps, {{rootState}}> = (state, ownProps) => ({
+});
+
+const mapDispatchToProps: MapDispatchToPropsParam<{{name}}DispatchProps, {{name}}OwnProps> = (dispatch) => ({
+});
+{{/if}}
+
+export default
+    {{#if withConnect}}
+    connect<{{name}}StateProps, {{name}}DispatchProps, {{name}}OwnProps, {{rootState}}>(
+        mapStateToProps,
+        mapDispatchToProps
+    )(
+    {{/if}}
+    {{name}}
+    {{#if withConnect}}
+    )
+    {{/if}}

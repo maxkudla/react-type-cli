@@ -1,0 +1,19 @@
+interface {{name}}OwnProps {
+}
+
+{{#if withConnect}}
+interface {{name}}StateProps {
+}
+
+interface {{name}}DispatchProps {
+}
+{{/if}}
+
+type {{name}}Props = {{name}}OwnProps
+    {{#if withConnect}}& {{name}}StateProps{{/if}}
+    {{#if withConnect}}& {{name}}DispatchProps{{/if}}
+
+
+
+
+
