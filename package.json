@@ -1,6 +1,6 @@
 {
   "name": "react-type-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && tsc && cp -r src/templates dist",
@@ -15,9 +15,11 @@
   "dependencies": {
     "commander": "^2.13.0",
     "handlebars": "^4.1.2",
+    "lodash.snakecase": "^4.1.1",
     "rc-config-loader": "^2.0.4"
   },
   "devDependencies": {
+    "@types/lodash.snakecase": "^4.1.6",
     "@types/node": "^12.6.8"
   }
 }

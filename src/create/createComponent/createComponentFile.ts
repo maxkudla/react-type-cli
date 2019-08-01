@@ -2,10 +2,10 @@ import Handlebars from "handlebars";
 import * as fs from "fs";
 import path from "path";
 
-import capitalize from "../utils/capitalize";
+import capitalize from "../../utils/capitalize";
 
-export default (args: Args, componentPath: string) => {
-    const filepath = path.join(__dirname, "..", 'templates', args.functional ? 'FunctionComponent.hbs' : 'ClassComponent.hbs');
+export default (args: GenerateComponentArgs, componentPath: string) => {
+    const filepath = path.join(__dirname, "../..", 'templates', args.functional ? 'FunctionComponent.hbs' : 'ClassComponent.hbs');
     const template = fs.readFileSync(filepath, 'utf8');
 
     fs.writeFileSync(

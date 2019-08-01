@@ -1,0 +1,29 @@
+import { Action } from "redux";
+import { call, put, takeLatest } from "redux-saga/effects";
+
+import {
+    {{Uppercase duckName}}_{{Uppercase (SnakeCase name)}},
+    {{duckName}}{{Capitalize name}}Start,
+    {{duckName}}{{Capitalize name}}Success,
+    {{duckName}}{{Capitalize name}}Fail,
+} from "../actions";
+
+const {{name}} = (payload) => {
+};
+
+function* {{duckName}}{{Capitalize name}}Request(action: Action) {
+    try {
+        yield put({{duckName}}{{Capitalize name}}Start());
+
+        const response = yield call({{name}}, action.payload);
+
+        yield put({{duckName}}{{Capitalize name}}Success(response));
+
+    } catch (e) {
+        yield put({{duckName}}{{Capitalize name}}Fail(e));
+    }
+};
+
+export default function* {{duckName}}{{Capitalize name}}Saga() {
+    yield takeLatest({{Uppercase duckName}}_{{Uppercase (SnakeCase name)}}, {{duckName}}{{Capitalize name}}Request);
+};

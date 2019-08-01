@@ -10,11 +10,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var handlebars_1 = __importDefault(require("handlebars"));
-var fs = __importStar(require("fs"));
 var path_1 = __importDefault(require("path"));
-exports.default = (function (args, componentPath) {
-    var filepath = path_1.default.join(__dirname, "..", 'templates', "ComponentIndex.hbs");
+var fs = __importStar(require("fs"));
+var handlebars_1 = __importDefault(require("handlebars"));
+var createReducersFile = function (args, duckPath) {
+    var filepath = path_1.default.join(__dirname, "../..", 'templates', "DuckReducers.hbs");
     var template = fs.readFileSync(filepath, 'utf8');
-    fs.writeFileSync(path_1.default.join(componentPath, "index.ts"), handlebars_1.default.compile(template)(args));
-});
+    fs.writeFileSync(path_1.default.join(duckPath, "reducers", "index.ts"), handlebars_1.default.compile(template)(args));
+};
+exports.default = createReducersFile;

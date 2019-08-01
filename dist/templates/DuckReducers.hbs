@@ -1,0 +1,15 @@
+/* rtc-imports */
+
+const handlers: {
+    [key: string]: Function
+} = {
+    /* rtc-handlers */
+};
+
+const initialState = {{JSONstringify initialState}};
+
+export default (state: {{Capitalize name}}State = initialState, action: Action) => {
+    const handler = handlers[action.type];
+
+    return handler !== undefined ? handler(state, action) : state;
+};

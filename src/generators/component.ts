@@ -5,7 +5,7 @@ import defaultConfig from "./../defaultConfig";
 import getRootPath from "../utils/getRootPath";
 
 
-async function generateComponent(componentName: string, cmd: CommandDto) {
+async function generateComponent(componentName: string, cmd: GenerateComponentCommand) {
     const functional = cmd.functional ? true : false;
     const memo = cmd.memo ? true : false;
     const withConnect = cmd.withConnect ? true : false;

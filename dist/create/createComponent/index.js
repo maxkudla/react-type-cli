@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var fs = __importStar(require("fs"));
 var path = __importStar(require("path"));
-var capitalize_1 = __importDefault(require("../utils/capitalize"));
+var capitalize_1 = __importDefault(require("../../utils/capitalize"));
 var createComponentFile_1 = __importDefault(require("./createComponentFile"));
 var createTypesFile_1 = __importDefault(require("./createTypesFile"));
 var createIndexFile_1 = __importDefault(require("./createIndexFile"));
@@ -23,7 +23,7 @@ var createComponent = function (args) {
         fs.mkdirSync(dirPath);
     }
     if (fs.existsSync(componentPath)) {
-        console.log(args.name + " component directory already exists");
+        console.error(args.name + " component directory already exists");
     }
     else {
         fs.mkdirSync(componentPath);

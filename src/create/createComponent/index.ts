@@ -1,13 +1,13 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import capitalize from "../utils/capitalize";
+import capitalize from "../../utils/capitalize";
 
 import createComponentFile from "./createComponentFile";
 import createTypesFile from "./createTypesFile";
 import createIndexFile from "./createIndexFile";
 
-const createComponent = (args: Args & {
+const createComponent = (args: GenerateComponentArgs & {
     rootPath: string
 }) => {
     const dirPath = args.global && args.globalComponentPath ? path.join(args.rootPath, args.globalComponentPath) : "";
@@ -19,7 +19,7 @@ const createComponent = (args: Args & {
     }
 
     if (fs.existsSync(componentPath)) {
-        console.log(`${args.name} component directory already exists`);
+        console.error(`${args.name} component directory already exists`);
     } else {
         fs.mkdirSync(componentPath);
 
