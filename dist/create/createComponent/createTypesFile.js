@@ -10,11 +10,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var handlebars_1 = __importDefault(require("handlebars"));
-var fs = __importStar(require("fs"));
-var path_1 = __importDefault(require("path"));
-exports.default = (function (args, componentPath) {
-    var filepath = path_1.default.join(__dirname, "../..", "templates", "ComponentTypes.hbs");
-    var template = fs.readFileSync(filepath, 'utf8');
-    fs.writeFileSync(path_1.default.join(componentPath, "types.d.ts"), handlebars_1.default.compile(template)(args));
-});
+const handlebars_1 = __importDefault(require("handlebars"));
+const fs = __importStar(require("fs"));
+const path_1 = __importDefault(require("path"));
+exports.default = (args, componentPath) => {
+    const filepath = path_1.default.join(__dirname, "../..", "templates", "ComponentTypes.hbs");
+    const template = fs.readFileSync(filepath, 'utf8');
+    fs.writeFileSync(path_1.default.join(componentPath, `types.d.ts`), handlebars_1.default.compile(template)(args));
+};

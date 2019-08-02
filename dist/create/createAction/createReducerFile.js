@@ -10,12 +10,18 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var path_1 = __importDefault(require("path"));
-var fs = __importStar(require("fs"));
-var handlebars_1 = __importDefault(require("handlebars"));
-var createReducerFile = function (args, duckPath) {
-    var filepath = path_1.default.join(__dirname, "../..", 'templates', "DuckReducer.hbs");
-    var template = fs.readFileSync(filepath, 'utf8');
-    fs.writeFileSync(path_1.default.join(duckPath, "reducers", args.name + ".ts"), handlebars_1.default.compile(template)(args));
+const path_1 = __importDefault(require("path"));
+const fs = __importStar(require("fs"));
+const handlebars_1 = __importDefault(require("handlebars"));
+const createReducersFile_1 = __importDefault(require("../createDuck/createReducersFile"));
+const createReducerFile = (args, dirPath) => {
+    const filepath = path_1.default.join(__dirname, "../..", 'templates', "DuckReducer.hbs");
+    const template = fs.readFileSync(filepath, 'utf8');
+    console.log(dirPath);
+    if (dirPath !== "" && !fs.existsSync(dirPath)) {
+        fs.mkdirSync(dirPath);
+        createReducersFile_1.default(args, dirPath);
+    }
+    fs.writeFileSync(path_1.default.join(dirPath, args.ducksPath ? "reducers" : "", `${args.name}.ts`), handlebars_1.default.compile(template)(args));
 };
 exports.default = createReducerFile;

@@ -10,12 +10,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var path_1 = __importDefault(require("path"));
-var fs = __importStar(require("fs"));
-var handlebars_1 = __importDefault(require("handlebars"));
-var createSagaFile = function (args, duckPath) {
-    var filepath = path_1.default.join(__dirname, "../..", 'templates', "DuckSaga.hbs");
-    var template = fs.readFileSync(filepath, 'utf8');
-    fs.writeFileSync(path_1.default.join(duckPath, "sagas", args.name + ".ts"), handlebars_1.default.compile(template)(args));
+const path_1 = __importDefault(require("path"));
+const fs = __importStar(require("fs"));
+const handlebars_1 = __importDefault(require("handlebars"));
+const createSagasFile_1 = __importDefault(require("../createDuck/createSagasFile"));
+const createSagaFile = (args, dirPath) => {
+    const filepath = path_1.default.join(__dirname, "../..", 'templates', "DuckSaga.hbs");
+    const template = fs.readFileSync(filepath, 'utf8');
+    if (dirPath !== "" && !fs.existsSync(dirPath)) {
+        fs.mkdirSync(dirPath);
+        createSagasFile_1.default(args, dirPath);
+    }
+    fs.writeFileSync(path_1.default.join(dirPath, args.ducksPath ? "sagas" : "", `${args.name}.ts`), handlebars_1.default.compile(template)(args));
 };
 exports.default = createSagaFile;

@@ -1,43 +1,50 @@
-interface GenerateComponentCommand {
-    functional: string
-    memo: string
-    withConnect: string
-    global: string
+interface Configuration {
+    rootState?: string
+
+    componentsPath?: string
+    ducksPath?: string
+
+    actionsPath?: string
+    reducersPath?: string
+
+    withSaga?: boolean
+    sagasPath?: string
+
+    withReselect?: boolean
+    selectorsPath?: string
+
+    initialState?: any
 }
 
-interface GenerateComponentArgs {
-    name: string
+interface GenerateComponentCommand {
     functional?: boolean
-    global?: boolean
     memo?: boolean
-    withConnect?: boolean
-    rootState?: string
-    globalComponentPath?: string
+    connect?: boolean
+    global?: boolean
+}
+
+interface GenerateComponentArgs extends Configuration, GenerateComponentCommand{
+    name: string
 }
 
 interface CreateDuckCommand {
-    reselect: string
-    saga: string
-}
-
-interface CreateDuckArgs {
-    name: string
     reselect?: boolean
     saga?: boolean
+}
+
+interface CreateDuckArgs extends Configuration, CreateDuckCommand{
+    name: string
     ducksPath?: string
 }
 
 interface CreateActionCommand {
-    noReducer: string
-    payload: string
-    error: string
+    saga?: boolean
+    reducer?: boolean
+    payload?: boolean
+    error?: boolean
 }
 
-interface CreateActionArgs {
+interface CreateActionArgs extends Configuration, CreateActionCommand{
     name: string
-    noReducer: boolean
-    payload: boolean
-    error: boolean
     duckName: string
-    ducksPath?: string
 }

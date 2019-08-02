@@ -10,17 +10,29 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var path_1 = __importDefault(require("path"));
-var fs = __importStar(require("fs"));
-var lodash_snakecase_1 = __importDefault(require("lodash.snakecase"));
-var capitalize_1 = __importDefault(require("../../utils/capitalize"));
-var importsMarker = "/* rtc-imports */";
-var handlersMarker = "/* rtc-handlers */";
-var updateImportMarker = function (t, args) { return t.replace(importsMarker, "import { " + args.name + "Start, " + args.name + "Success, " + args.name + "Fail } from \"./" + args.name + "\";\n\nimport {\n    " + lodash_snakecase_1.default(args.duckName + capitalize_1.default(args.name)).toUpperCase() + "_START,\n    " + lodash_snakecase_1.default(args.duckName + capitalize_1.default(args.name)).toUpperCase() + "_SUCCESS,\n    " + lodash_snakecase_1.default(args.duckName + capitalize_1.default(args.name)).toUpperCase() + "_FAIL\n} from \"../actions/" + args.name + "\";\n\n" + importsMarker); };
-var updateHandlerMarker = function (t, args) { return t.replace(handlersMarker, "\n    [" + lodash_snakecase_1.default(args.duckName + capitalize_1.default(args.name)).toUpperCase() + "_START]: " + args.name + "Start,\n    [" + lodash_snakecase_1.default(args.duckName + capitalize_1.default(args.name)).toUpperCase() + "_SUCCESS]: " + args.name + "Success,\n    [" + lodash_snakecase_1.default(args.duckName + capitalize_1.default(args.name)).toUpperCase() + "_FAIL]: " + args.name + "Fail,\n    " + handlersMarker); };
-var updateReducersFile = function (args, duckPath) {
-    var filepath = path_1.default.join(duckPath, "reducers", "index.ts");
-    var template = fs.readFileSync(filepath, 'utf8');
-    fs.writeFileSync(path_1.default.join(duckPath, "reducers", "index.ts"), updateHandlerMarker(updateImportMarker(template, args), args));
+const path_1 = __importDefault(require("path"));
+const fs = __importStar(require("fs"));
+const lodash_snakecase_1 = __importDefault(require("lodash.snakecase"));
+const capitalize_1 = __importDefault(require("../../utils/capitalize"));
+const importsMarker = "/* rtc-imports */";
+const handlersMarker = "/* rtc-handlers */";
+const updateImportMarker = (t, args) => t.replace(importsMarker, `import { ${args.name}Start, ${args.name}Success, ${args.name}Fail } from "./${args.name}";
+
+import {
+    ${lodash_snakecase_1.default(args.duckName + capitalize_1.default(args.name)).toUpperCase()}_START,
+    ${lodash_snakecase_1.default(args.duckName + capitalize_1.default(args.name)).toUpperCase()}_SUCCESS,
+    ${lodash_snakecase_1.default(args.duckName + capitalize_1.default(args.name)).toUpperCase()}_FAIL
+} from "../actions/${args.name}";
+
+${importsMarker}`);
+const updateHandlerMarker = (t, args) => t.replace(handlersMarker, `
+    [${lodash_snakecase_1.default(args.duckName + capitalize_1.default(args.name)).toUpperCase()}_START]: ${args.name}Start,
+    [${lodash_snakecase_1.default(args.duckName + capitalize_1.default(args.name)).toUpperCase()}_SUCCESS]: ${args.name}Success,
+    [${lodash_snakecase_1.default(args.duckName + capitalize_1.default(args.name)).toUpperCase()}_FAIL]: ${args.name}Fail,
+    ${handlersMarker}`);
+const updateReducersFile = (args, dirPath) => {
+    const filepath = path_1.default.join(dirPath, args.ducksPath ? "reducers" : "", "index.ts");
+    const template = fs.readFileSync(filepath, 'utf8');
+    fs.writeFileSync(filepath, updateHandlerMarker(updateImportMarker(template, args), args));
 };
 exports.default = updateReducersFile;

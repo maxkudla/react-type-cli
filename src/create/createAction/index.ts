@@ -1,5 +1,4 @@
 import * as path from "path";
-import * as fs from "fs";
 import createActionFile from "./createActionFile";
 import createReducerFile from "./createReducerFile";
 import updateActionsFile from "./updateActionsFile";
@@ -7,29 +6,25 @@ import updateReducersFile from "./updateReducersFile";
 import createSagaFile from "./createSagaFile";
 import updateSagasFile from "./updateSagasFile";
 
-const createAction = (args: CreateActionArgs & {
+const createAction = (args: CreateActionArgs & Configuration &{
     rootPath: string
 }) => {
-    const duckPath = args.ducksPath ? path.join(args.rootPath, args.ducksPath, args.duckName) : "";
+    const dirPath = path.join(args.rootPath, args.ducksPath || "");
 
-    if (!fs.existsSync(duckPath)) {
-        console.error(`${args.duckName} duck directory is not exists`)
-    } else if (fs.existsSync(path.join(duckPath, "actions", `${args.name}.ts`))) {
-        console.error(`${args.name} action already exists`)
-    } else {
-        createActionFile(args, duckPath);
-        updateActionsFile(args, duckPath);
+    const actionsPath = path.join(dirPath, args.ducksPath ? `${args.duckName}` : args.actionsPath || "");
+    createActionFile(args, actionsPath);
+    updateActionsFile(args, actionsPath);
 
-        if (!args.noReducer) {
-            createReducerFile(args, duckPath)
-            updateReducersFile(args, duckPath);
-        }
+    if (args.reducer) {
+        const reducersPath = path.join(dirPath, args.ducksPath ? `${args.duckName}` : args.reducersPath || "");
+        createReducerFile(args, reducersPath);
+        updateReducersFile(args, reducersPath);
+    }
 
-        if (fs.existsSync(path.join(duckPath, "sagas", "index.ts"))) {
-            createSagaFile(args, duckPath)
-            updateSagasFile(args, duckPath);
-        }
-
+    if (args.withSaga && args.saga) {
+        const sagasPath = path.join(dirPath, args.ducksPath ? `${args.duckName}` : args.sagasPath || "");
+        createSagaFile(args, sagasPath)
+        updateSagasFile(args, sagasPath);
     }
 
 }

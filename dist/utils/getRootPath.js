@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var getRootPath = function (rcfile) {
+const getRootPath = (rcfile) => {
     if (rcfile) {
-        var tmp = rcfile.filePath.split("/");
+        const tmp = rcfile.filePath.split("/");
         tmp.pop();
         return tmp.join("/");
     }

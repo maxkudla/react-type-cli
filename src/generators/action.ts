@@ -4,10 +4,8 @@ import defaultConfig from "../defaultConfig";
 import getRootPath from "../utils/getRootPath";
 import createAction from "../create/createAction";
 
-async function generateAction (duckName: string, actionName: string, cmd: CreateActionCommand) {
-    const payload = cmd.payload ? true : false;
-    const error = cmd.error ? true : false;
-    const noReducer = cmd.noReducer ? true : false;
+async function generateAction (actionName: string, duckName: string, cmd: CreateActionCommand) {
+    const {payload, error, reducer, saga} = cmd;
 
     // @ts-ignore
     const config = Object.assign({}, defaultConfig);
@@ -20,7 +18,9 @@ async function generateAction (duckName: string, actionName: string, cmd: Create
     // @ts-ignore
     if (rc) { Object.assign(config, rc.config) }
 
-    const args = {...config,rootPath, duckName, payload, error, noReducer,  name: actionName};
+    const args = {...config, rootPath, duckName, payload, error, reducer, saga, name: actionName};
+
+    console.log(args);
 
     await createAction(args)
 }

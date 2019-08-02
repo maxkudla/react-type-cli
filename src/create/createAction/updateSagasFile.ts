@@ -13,13 +13,13 @@ const updateHandlerMarker = (t: string, args: CreateActionArgs) => t.replace(han
     `fork(${args.duckName + capitalize(args.name)}Saga),
         ${handlerMarker}`);
 
-const updateSagasFile = (args: CreateActionArgs, duckPath: string) => {
-    const filepath = path.join(duckPath, "sagas", "index.ts");
+const updateSagasFile = (args: CreateActionArgs, dirPath: string) => {
+    const filepath = path.join(dirPath, args.ducksPath ? "sagas" : "", "index.ts");
     const template = fs.readFileSync(filepath, 'utf8');
 
 
     fs.writeFileSync(
-        path.join(duckPath, "sagas", "index.ts"),
+        filepath,
         updateHandlerMarker(updateImportMarker(template, args), args)
     )};
 

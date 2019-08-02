@@ -10,20 +10,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var fs = __importStar(require("fs"));
-var path = __importStar(require("path"));
-var capitalize_1 = __importDefault(require("../../utils/capitalize"));
-var createComponentFile_1 = __importDefault(require("./createComponentFile"));
-var createTypesFile_1 = __importDefault(require("./createTypesFile"));
-var createIndexFile_1 = __importDefault(require("./createIndexFile"));
-var createComponent = function (args) {
-    var dirPath = args.global && args.globalComponentPath ? path.join(args.rootPath, args.globalComponentPath) : "";
-    var componentPath = path.join(dirPath, capitalize_1.default(args.name));
+const fs = __importStar(require("fs"));
+const path = __importStar(require("path"));
+const capitalize_1 = __importDefault(require("../../utils/capitalize"));
+const createComponentFile_1 = __importDefault(require("./createComponentFile"));
+const createTypesFile_1 = __importDefault(require("./createTypesFile"));
+const createIndexFile_1 = __importDefault(require("./createIndexFile"));
+const createComponent = (args) => {
+    const dirPath = args.global && args.componentsPath ? path.join(args.rootPath, args.componentsPath) : "";
+    const componentPath = path.join(dirPath, capitalize_1.default(args.name));
     if (dirPath !== "" && !fs.existsSync(dirPath)) {
         fs.mkdirSync(dirPath);
     }
     if (fs.existsSync(componentPath)) {
-        console.error(args.name + " component directory already exists");
+        console.error(`${args.name} component directory already exists`);
     }
     else {
         fs.mkdirSync(componentPath);

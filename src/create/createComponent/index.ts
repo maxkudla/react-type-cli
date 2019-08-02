@@ -7,10 +7,10 @@ import createComponentFile from "./createComponentFile";
 import createTypesFile from "./createTypesFile";
 import createIndexFile from "./createIndexFile";
 
-const createComponent = (args: GenerateComponentArgs & {
+const createComponent = (args: GenerateComponentArgs & Configuration & {
     rootPath: string
 }) => {
-    const dirPath = args.global && args.globalComponentPath ? path.join(args.rootPath, args.globalComponentPath) : "";
+    const dirPath = args.global && args.componentsPath ? path.join(args.rootPath, args.componentsPath) : "";
 
     const componentPath = path.join(dirPath, capitalize(args.name));
 

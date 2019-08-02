@@ -23,13 +23,13 @@ const updateHandlerMarker = (t: string, args: CreateActionArgs) => t.replace(han
     [${snakeCase(args.duckName + capitalize(args.name)).toUpperCase()}_FAIL]: ${args.name}Fail,
     ${handlersMarker}`);
 
-const updateReducersFile = (args: CreateActionArgs, duckPath: string) => {
-    const filepath = path.join(duckPath, "reducers", "index.ts");
+const updateReducersFile = (args: CreateActionArgs, dirPath: string) => {
+    const filepath = path.join(dirPath, args.ducksPath ? "reducers" : "", "index.ts");
     const template = fs.readFileSync(filepath, 'utf8');
 
 
     fs.writeFileSync(
-        path.join(duckPath, "reducers", "index.ts"),
+        filepath,
         updateHandlerMarker(updateImportMarker(template, args), args)
     )};
 

@@ -10,13 +10,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var path_1 = __importDefault(require("path"));
-var fs = __importStar(require("fs"));
-var handlebars_1 = __importDefault(require("handlebars"));
-var capitalize_1 = __importDefault(require("../../utils/capitalize"));
-var createTypesFile = function (args, duckPath) {
-    var filepath = path_1.default.join(__dirname, "../..", 'templates', "DuckStateType.hbs");
-    var template = fs.readFileSync(filepath, 'utf8');
-    fs.writeFileSync(path_1.default.join(duckPath, "types", capitalize_1.default(args.name) + "State.d.ts"), handlebars_1.default.compile(template)(args));
+const path_1 = __importDefault(require("path"));
+const fs = __importStar(require("fs"));
+const handlebars_1 = __importDefault(require("handlebars"));
+const capitalize_1 = __importDefault(require("../../utils/capitalize"));
+const createTypesFile = (args, duckPath) => {
+    const filepath = path_1.default.join(__dirname, "../..", 'templates', "DuckStateType.hbs");
+    const template = fs.readFileSync(filepath, 'utf8');
+    fs.writeFileSync(path_1.default.join(duckPath, "types", `${capitalize_1.default(args.name)}State.d.ts`), handlebars_1.default.compile(template)(args));
 };
 exports.default = createTypesFile;
