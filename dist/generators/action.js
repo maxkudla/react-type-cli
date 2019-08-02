@@ -28,7 +28,6 @@ function generateAction(actionName, duckName, cmd) {
             Object.assign(config, rc.config);
         }
         const args = Object.assign({}, config, { rootPath, duckName, payload, error, reducer, saga, name: actionName });
-        console.log(args);
         yield createAction_1.default(args);
     });
 }

@@ -20,8 +20,6 @@ async function generateAction (actionName: string, duckName: string, cmd: Create
 
     const args = {...config, rootPath, duckName, payload, error, reducer, saga, name: actionName};
 
-    console.log(args);
-
     await createAction(args)
 }
 
