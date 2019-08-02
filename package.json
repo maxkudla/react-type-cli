@@ -1,6 +1,6 @@
 {
   "name": "react-type-cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && tsc && cp -r src/templates dist",
@@ -9,7 +9,7 @@
   "bin": {
     "rtc": "dist/index.js"
   },
-  "keywords": [],
+  "keywords": ["react", "typescript", "cli"],
   "author": "Max Kudla",
   "license": "MIT",
   "dependencies": {
@@ -21,5 +21,9 @@
   "devDependencies": {
     "@types/lodash.snakecase": "^4.1.6",
     "@types/node": "^12.6.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxkudla/react-type-cli"
   }
 }

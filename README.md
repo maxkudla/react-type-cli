@@ -1,6 +1,4 @@
 # react-type-cli
-[![npm package][npm-badge]][npm]
-
 CLI tool for React + Redux with Typescript
 
 ## Features
@@ -50,9 +48,9 @@ Create a .rtcrc file in your root directory to configure cli.
     "withSaga": true,
     "withReselect": true,
     "initialState": {
-    "data": null,
-    "error": null,
-    "loading": false
+        "data": null,
+        "error": null,
+        "loading": false
     },
     "rootState": "AppState"
 
