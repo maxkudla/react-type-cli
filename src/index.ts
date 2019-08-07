@@ -13,6 +13,7 @@ program
     .option('-f, --functional', 'Create functional component')
     .option('-c, --connect', 'Connect with redux store')
     .option('-m, --memo', 'Create memoized component')
+    .option('--stories', 'Create component with stories')
     .action(generateComponent);
 
 program

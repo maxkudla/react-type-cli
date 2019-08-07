@@ -6,6 +6,7 @@ import capitalize from "../../utils/capitalize";
 import createComponentFile from "./createComponentFile";
 import createTypesFile from "./createTypesFile";
 import createIndexFile from "./createIndexFile";
+import createStoriesFile from "./createStoriesFile";
 
 const createComponent = (args: GenerateComponentArgs & Configuration & {
     rootPath: string
@@ -26,6 +27,10 @@ const createComponent = (args: GenerateComponentArgs & Configuration & {
         createComponentFile(args, componentPath);
         createTypesFile(args, componentPath);
         createIndexFile(args, componentPath);
+
+        if (args.stories) {
+            createStoriesFile(args, componentPath);
+        }
     }
 }
 

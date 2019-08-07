@@ -17,6 +17,7 @@ interface Configuration {
 }
 
 interface GenerateComponentCommand {
+    stories?: boolean
     functional?: boolean
     memo?: boolean
     connect?: boolean
