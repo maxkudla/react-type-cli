@@ -6,7 +6,7 @@ import getRootPath from "../utils/getRootPath";
 
 
 async function generateComponent(componentName: string, cmd: GenerateComponentCommand) {
-    const {functional, memo, connect, global} = cmd
+    const {functional, memo, connect, global} = cmd;
 
     // @ts-ignore
     const config = Object.assign({}, defaultConfig);

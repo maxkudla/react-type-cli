@@ -10,8 +10,6 @@ export default (args: GenerateComponentArgs, componentPath: string) => {
 
     fs.writeFileSync(
         path.join(componentPath, `${capitalize(args.name)}.tsx`),
-        Handlebars.compile(template)({
-            name: args.name
-        })
+        Handlebars.compile(template)(args)
     )
 }
