@@ -16,6 +16,7 @@ const capitalize_1 = __importDefault(require("../../utils/capitalize"));
 const createComponentFile_1 = __importDefault(require("./createComponentFile"));
 const createTypesFile_1 = __importDefault(require("./createTypesFile"));
 const createIndexFile_1 = __importDefault(require("./createIndexFile"));
+const createStoriesFile_1 = __importDefault(require("./createStoriesFile"));
 const createComponent = (args) => {
     const dirPath = args.global && args.componentsPath ? path.join(args.rootPath, args.componentsPath) : "";
     const componentPath = path.join(dirPath, capitalize_1.default(args.name));
@@ -30,6 +31,9 @@ const createComponent = (args) => {
         createComponentFile_1.default(args, componentPath);
         createTypesFile_1.default(args, componentPath);
         createIndexFile_1.default(args, componentPath);
+        if (args.stories) {
+            createStoriesFile_1.default(args, componentPath);
+        }
     }
 };
 exports.default = createComponent;

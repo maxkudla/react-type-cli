@@ -1,6 +1,6 @@
 {
   "name": "react-type-cli",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && tsc && cp -r src/templates dist",
@@ -9,7 +9,11 @@
   "bin": {
     "rtc": "dist/index.js"
   },
-  "keywords": ["react", "typescript", "cli"],
+  "keywords": [
+    "react",
+    "typescript",
+    "cli"
+  ],
   "author": "Max Kudla",
   "license": "MIT",
   "dependencies": {
