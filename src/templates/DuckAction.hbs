@@ -4,20 +4,20 @@ export const {{Uppercase duckName}}_{{Uppercase (SnakeCase name)}}_SUCCESS = "{{
 export const {{Uppercase duckName}}_{{Uppercase (SnakeCase name)}}_FAIL = "{{Uppercase duckName}}_{{Uppercase (SnakeCase name)}}_FAIL";
 
 export const {{duckName}}{{Capitalize name}} = ({{#if payload}}payload{{/if}}) => ({
-    action: {{Uppercase duckName}}_{{Uppercase (SnakeCase name)}}{{#if payload}},
+    type: {{Uppercase duckName}}_{{Uppercase (SnakeCase name)}}{{#if payload}},
     payload{{/if}}
 });
 
 export const {{duckName}}{{Capitalize name}}Start = () => ({
-    action: {{Uppercase duckName}}_{{Uppercase (SnakeCase name)}}_START
+    type: {{Uppercase duckName}}_{{Uppercase (SnakeCase name)}}_START
 });
 
 export const {{duckName}}{{Capitalize name}}Success = ({{#if payload}}payload{{/if}}) => ({
-    action: {{Uppercase duckName}}_{{Uppercase (SnakeCase name)}}_SUCCESS{{#if payload}},
+    type: {{Uppercase duckName}}_{{Uppercase (SnakeCase name)}}_SUCCESS{{#if payload}},
     payload{{/if}}
 });
 
 export const {{duckName}}{{Capitalize name}}Fail = ({{#if error}}error{{/if}}) => ({
-    action: {{Uppercase duckName}}_{{Uppercase (SnakeCase name)}}_FAIL{{#if error}},
+    type: {{Uppercase duckName}}_{{Uppercase (SnakeCase name)}}_FAIL{{#if error}},
     error{{/if}}
 });
