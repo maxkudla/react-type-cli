@@ -32,6 +32,7 @@ CLI tool for React + Redux with Typescript
 * generating sagas automatically for action
 * generating selectors file with [reselect](https://www.npmjs.com/package/reselect)
 * generating stories file with [storybook](https://storybook.js.org/)
+* generating styles file with [styled-components](https://www.styled-components.com/)
 
 ## Installation
     $ npm i -g react-type-cli
@@ -76,6 +77,7 @@ Generate component with `rtc gc ComponentName` command.
 * `-f` - create function component
 * `-m` - with React.memo
 * `-c` - with Redux.connect
+* `-s` - with styled-components styles
 * `--stories` - with storybook stories
 
 
