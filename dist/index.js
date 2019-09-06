@@ -15,6 +15,7 @@ commander_1.default
     .option('-f, --functional', 'Create functional component')
     .option('-c, --connect', 'Connect with redux store')
     .option('-m, --memo', 'Create memoized component')
+    .option('-s, --styled', 'Create styled component')
     .option('--stories', 'Create component with stories')
     .action(component_1.default);
 commander_1.default

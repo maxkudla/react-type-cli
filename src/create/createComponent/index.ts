@@ -7,6 +7,7 @@ import createComponentFile from "./createComponentFile";
 import createTypesFile from "./createTypesFile";
 import createIndexFile from "./createIndexFile";
 import createStoriesFile from "./createStoriesFile";
+import createStylesFile from "./createStylesFile";
 
 const createComponent = (args: GenerateComponentArgs & Configuration & {
     rootPath: string
@@ -30,6 +31,10 @@ const createComponent = (args: GenerateComponentArgs & Configuration & {
 
         if (args.stories) {
             createStoriesFile(args, componentPath);
+        }
+
+        if (args.styled) {
+            createStylesFile(args, componentPath);
         }
     }
 }

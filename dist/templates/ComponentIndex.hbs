@@ -1,8 +1,13 @@
+{{#if styled}}
+import styled from "styled-components";
+{{/if}}
 {{#if connect}}
 import { connect, MapStateToPropsParam, MapDispatchToPropsParam } from "react-redux";
 {{/if}}
 import {{name}} from "./{{name}}"
-
+{{#if styled}}
+    import styles from "./styles";
+{{/if}}
 
 {{#if connect}}
 const mapStateToProps: MapStateToPropsParam<{{name}}StateProps, {{name}}OwnProps, {{rootState}}> = (state, ownProps) => ({
@@ -13,6 +18,9 @@ const mapDispatchToProps: MapDispatchToPropsParam<{{name}}DispatchProps, {{name}
 {{/if}}
 
 export default
+    {{#if styled}}
+        styled(
+    {{/if}}
     {{#if connect}}
     connect<{{name}}StateProps, {{name}}DispatchProps, {{name}}OwnProps, {{rootState}}>(
         mapStateToProps,
@@ -22,4 +30,9 @@ export default
     {{name}}
     {{#if connect}}
     )
+    {{/if}}
+    {{#if styled}}
+    )`
+        ${styles}
+    `
     {{/if}}

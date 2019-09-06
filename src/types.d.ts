@@ -22,6 +22,7 @@ interface GenerateComponentCommand {
     memo?: boolean
     connect?: boolean
     global?: boolean
+    styled?: boolean
 }
 
 interface GenerateComponentArgs extends Configuration, GenerateComponentCommand{
